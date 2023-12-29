@@ -1,4 +1,4 @@
-package br.com.derlandybelchior.navigation
+package br.com.derlandybelchior.calorytracker.navigation
 
 import androidx.navigation.NavController
 import br.com.derlandybelchior.core.util.UiEvent

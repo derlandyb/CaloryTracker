@@ -8,7 +8,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import br.com.derlandybelchior.calorytracker.ui.theme.CaloryTrackerTheme
 import br.com.derlandybelchior.core.navigation.Route
-import br.com.derlandybelchior.navigation.navigate
+import br.com.derlandybelchior.calorytracker.navigation.navigate
 import br.com.derlandybelchior.presentation.welcome.WelcomeScreen
 
 class MainActivity : ComponentActivity() {
