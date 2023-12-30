@@ -3,6 +3,7 @@ package br.com.derlandybelchior.presentation.components
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.IntrinsicSize
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.foundation.text.KeyboardOptions
@@ -44,6 +45,7 @@ fun UnitTextField(
                 .width(IntrinsicSize.Min)
                 .alignBy(LastBaseline)
         )
+        Spacer(modifier = Modifier.width(spacing.spaceSmall))
         Text(
             text = unit,
             modifier = Modifier.alignBy(LastBaseline),

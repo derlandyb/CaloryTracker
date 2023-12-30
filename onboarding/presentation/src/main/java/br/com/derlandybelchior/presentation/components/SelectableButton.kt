@@ -1,5 +1,6 @@
 package br.com.derlandybelchior.presentation.components
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
@@ -29,6 +30,10 @@ fun SelectableButton(
         .clip(RoundedCornerShape(100.dp))
         .border(
             width = 2.dp, color = color, shape = RoundedCornerShape(100.dp)
+        )
+        .background(
+            color = if (isSelected) color else Color.Transparent,
+            shape = RoundedCornerShape(100.dp)
         )
         .clickable {
             onClick()
