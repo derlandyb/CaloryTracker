@@ -14,8 +14,10 @@ import androidx.navigation.compose.rememberNavController
 import br.com.derlandybelchior.calorytracker.navigation.navigate
 import br.com.derlandybelchior.calorytracker.ui.theme.CaloryTrackerTheme
 import br.com.derlandybelchior.core.navigation.Route
+import br.com.derlandybelchior.presentation.activity.ActivityScreen
 import br.com.derlandybelchior.presentation.age.AgeScreen
 import br.com.derlandybelchior.presentation.gender.GenderScreen
+import br.com.derlandybelchior.presentation.goal.GoalScreen
 import br.com.derlandybelchior.presentation.height.HeightScreen
 import br.com.derlandybelchior.presentation.weight.WeightScreen
 import br.com.derlandybelchior.presentation.welcome.WelcomeScreen
@@ -64,9 +66,17 @@ class MainActivity : ComponentActivity() {
                                 onNavigate = navController::navigate
                             )
                         }
-                        composable(Route.NUTRIENT_GOAL) {}
-                        composable(Route.ACTIVITY) {}
-                        composable(Route.GOAL) {}
+                        composable(Route.ACTIVITY) {
+                            ActivityScreen(
+                                onNavigate = navController::navigate
+                            )
+                        }
+                        composable(Route.NUTRIENT_GOAL) {
+
+                        }
+                        composable(Route.GOAL) {
+                            GoalScreen(onNavigate = navController::navigate)
+                        }
                         composable(Route.TRACKER_OVERVIEW) {}
                         composable(Route.SEARCH) {}
                     }
