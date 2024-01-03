@@ -38,7 +38,7 @@ fun SelectableButton(
         .clickable {
             onClick()
         }
-        .padding(LocalSpacing.current.spaceSmall)) {
+        .padding(LocalSpacing.current.spaceMedium)) {
         Text(
             text = text,
             style = textStyle,
