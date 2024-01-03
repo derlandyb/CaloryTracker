@@ -3,12 +3,18 @@ package br.com.derlandybelchior.calorytracker
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material.Scaffold
+import androidx.compose.material.rememberScaffoldState
+import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import br.com.derlandybelchior.calorytracker.navigation.navigate
 import br.com.derlandybelchior.calorytracker.ui.theme.CaloryTrackerTheme
 import br.com.derlandybelchior.core.navigation.Route
-import br.com.derlandybelchior.calorytracker.navigation.navigate
+import br.com.derlandybelchior.presentation.age.AgeScreen
 import br.com.derlandybelchior.presentation.gender.GenderScreen
 import br.com.derlandybelchior.presentation.welcome.WelcomeScreen
 import dagger.hilt.android.AndroidEntryPoint
@@ -20,23 +26,38 @@ class MainActivity : ComponentActivity() {
         setContent {
             CaloryTrackerTheme {
                 val navController = rememberNavController()
-                NavHost(navController = navController, startDestination = Route.WELCOME) {
-                    composable(Route.WELCOME){
-                        WelcomeScreen(
-                            onNavigate = navController::navigate
-                        )
+                val scaffoldState = rememberScaffoldState()
+                Scaffold(
+                    scaffoldState = scaffoldState,
+                    modifier = Modifier.fillMaxSize(),
+                ) { paddingValues ->
+                    NavHost(
+                        navController = navController,
+                        startDestination = Route.WELCOME,
+                        modifier = Modifier.padding(paddingValues)
+                    ) {
+                        composable(Route.WELCOME) {
+                            WelcomeScreen(
+                                onNavigate = navController::navigate
+                            )
+                        }
+                        composable(Route.AGE) {
+                            AgeScreen(
+                                scaffoldState = scaffoldState,
+                                onNavigate = navController::navigate
+                            )
+                        }
+                        composable(Route.GENDER) {
+                            GenderScreen(onNavigate = navController::navigate)
+                        }
+                        composable(Route.HEIGHT) {}
+                        composable(Route.WEIGHT) {}
+                        composable(Route.NUTRIENT_GOAL) {}
+                        composable(Route.ACTIVITY) {}
+                        composable(Route.GOAL) {}
+                        composable(Route.TRACKER_OVERVIEW) {}
+                        composable(Route.SEARCH) {}
                     }
-                    composable(Route.AGE){}
-                    composable(Route.GENDER){
-                        GenderScreen(onNavigate = navController::navigate)
-                    }
-                    composable(Route.HEIGHT){}
-                    composable(Route.WEIGHT){}
-                    composable(Route.NUTRIENT_GOAL){}
-                    composable(Route.ACTIVITY){}
-                    composable(Route.GOAL){}
-                    composable(Route.TRACKER_OVERVIEW){}
-                    composable(Route.SEARCH){}
                 }
             }
         }
