@@ -16,6 +16,8 @@ import br.com.derlandybelchior.calorytracker.ui.theme.CaloryTrackerTheme
 import br.com.derlandybelchior.core.navigation.Route
 import br.com.derlandybelchior.presentation.age.AgeScreen
 import br.com.derlandybelchior.presentation.gender.GenderScreen
+import br.com.derlandybelchior.presentation.height.HeightScreen
+import br.com.derlandybelchior.presentation.weight.WeightScreen
 import br.com.derlandybelchior.presentation.welcome.WelcomeScreen
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -50,8 +52,18 @@ class MainActivity : ComponentActivity() {
                         composable(Route.GENDER) {
                             GenderScreen(onNavigate = navController::navigate)
                         }
-                        composable(Route.HEIGHT) {}
-                        composable(Route.WEIGHT) {}
+                        composable(Route.HEIGHT) {
+                            HeightScreen(
+                                scaffoldState = scaffoldState,
+                                onNavigate = navController::navigate
+                            )
+                        }
+                        composable(Route.WEIGHT) {
+                            WeightScreen(
+                                scaffoldState = scaffoldState,
+                                onNavigate = navController::navigate
+                            )
+                        }
                         composable(Route.NUTRIENT_GOAL) {}
                         composable(Route.ACTIVITY) {}
                         composable(Route.GOAL) {}
