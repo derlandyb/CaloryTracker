@@ -65,7 +65,7 @@ class TrackerOverviewViewModel @Inject constructor(
 
             is TrackerOverviewEvent.OnPreviousDayClick -> {
                 state = state.copy(
-                    date = state.date.plusDays(ONE_DAY)
+                    date = state.date.minusDays(ONE_DAY)
                 )
             }
 
