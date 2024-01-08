@@ -1,4 +1,4 @@
-package br.com.derlandybelchior.presentation.components
+package br.com.derlandybelchior.presentation.tracker_overview.components
 
 import androidx.compose.animation.core.animateIntAsState
 import androidx.compose.foundation.background
@@ -25,6 +25,7 @@ import br.com.derlandybelchior.core_ui.CarbColor
 import br.com.derlandybelchior.core_ui.FatColor
 import br.com.derlandybelchior.core_ui.LocalSpacing
 import br.com.derlandybelchior.core_ui.ProteinColor
+import br.com.derlandybelchior.presentation.components.UnitDisplay
 import br.com.derlandybelchior.presentation.tracker_overview.TrackerOverviewState
 
 @Composable

@@ -1,4 +1,4 @@
-package br.com.derlandybelchior.presentation.components
+package br.com.derlandybelchior.presentation.tracker_overview.components
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.res.stringResource
