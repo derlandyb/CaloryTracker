@@ -8,9 +8,11 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Scaffold
 import androidx.compose.material.rememberScaffoldState
 import androidx.compose.ui.Modifier
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
 import br.com.derlandybelchior.calorytracker.navigation.navigate
 import br.com.derlandybelchior.calorytracker.ui.theme.CaloryTrackerTheme
 import br.com.derlandybelchior.core.navigation.Route
@@ -20,6 +22,7 @@ import br.com.derlandybelchior.presentation.gender.GenderScreen
 import br.com.derlandybelchior.presentation.goal.GoalScreen
 import br.com.derlandybelchior.presentation.height.HeightScreen
 import br.com.derlandybelchior.presentation.nutrient_goal.NutrientGoalScreen
+import br.com.derlandybelchior.presentation.search.SearchScreen
 import br.com.derlandybelchior.presentation.tracker_overview.TrackerOverviewScreen
 import br.com.derlandybelchior.presentation.weight.WeightScreen
 import br.com.derlandybelchior.presentation.welcome.WelcomeScreen
@@ -85,7 +88,44 @@ class MainActivity : ComponentActivity() {
                         composable(Route.TRACKER_OVERVIEW) {
                             TrackerOverviewScreen(onNavigate = navController::navigate)
                         }
-                        composable(Route.SEARCH) {}
+                        composable(
+                            route = Route.SEARCH + "/{mealName}"
+                                + "/{dayOfMonth}"
+                                + "/{month}"
+                                + "/{year}",
+                            arguments = listOf(
+                                navArgument("mealName") {
+                                    type = NavType.StringType
+                                },
+                                navArgument("dayOfMonth") {
+                                    type = NavType.IntType
+                                },
+                                navArgument("month") {
+                                    type = NavType.IntType
+                                },
+                                navArgument("year") {
+                                    type = NavType.IntType
+                                }
+                            )
+                        ) {
+                            val mealName = it.arguments?.getString("mealName")
+                            val dayOfMonth = it.arguments?.getInt("dayOfMonth")
+                            val month = it.arguments?.getInt("month")
+                            val year = it.arguments?.getInt("year")
+
+                            if (mealName != null && dayOfMonth != null && month != null && year != null) {
+                                SearchScreen(
+                                    scaffoldState = scaffoldState,
+                                    mealName = mealName,
+                                    dayOfMonth = dayOfMonth,
+                                    month = month,
+                                    year = year,
+                                    onNavigateUp = {
+                                        navController.navigateUp()
+                                    },
+                                )
+                            }
+                        }
                     }
                 }
             }
