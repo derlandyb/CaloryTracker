@@ -26,16 +26,16 @@ import br.com.derlandybelchior.presentation.components.UnitTextField
 @Composable
 fun NutrientGoalScreen(
     scaffoldState: ScaffoldState,
-    onNavigate: (UiEvent.Navigate) -> Unit,
+    onNextClick: () -> Unit,
     viewModel: NutrientGoalViewModel = hiltViewModel(),
 
-) {
+    ) {
     val spacing = LocalSpacing.current
     val context = LocalContext.current
     LaunchedEffect(key1 = true) {
         viewModel.uiEvent.collect { event ->
             when (event) {
-                is UiEvent.Navigate -> onNavigate(event)
+                is UiEvent.Success -> onNextClick()
                 is UiEvent.ShowMessage -> {
                     scaffoldState.snackbarHostState.showSnackbar(
                         message = event.message.asString(context)

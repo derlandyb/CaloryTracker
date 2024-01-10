@@ -8,7 +8,6 @@ import androidx.lifecycle.viewModelScope
 import br.com.derlandybelchior.core.R
 import br.com.derlandybelchior.core.domain.preferences.Preferences
 import br.com.derlandybelchior.core.domain.use_case.FilterOutDigits
-import br.com.derlandybelchior.core.navigation.Route
 import br.com.derlandybelchior.core.util.UiEvent
 import br.com.derlandybelchior.core.util.UiText
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -45,7 +44,7 @@ class HeightScreenViewModel @Inject constructor(
                 return@launch
             }
             preferences.saveHeight(heightNumber)
-            _uiEvent.send(UiEvent.Navigate(Route.WEIGHT))
+            _uiEvent.send(UiEvent.Success)
         }
     }
 }

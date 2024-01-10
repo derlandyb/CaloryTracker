@@ -20,7 +20,6 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.hilt.navigation.compose.hiltViewModel
 import br.com.derlandybelchior.core.R
-import br.com.derlandybelchior.core.domain.model.ActivityLevel
 import br.com.derlandybelchior.core.domain.model.GoalType
 import br.com.derlandybelchior.core.util.UiEvent
 import br.com.derlandybelchior.core_ui.LocalSpacing
@@ -29,7 +28,7 @@ import br.com.derlandybelchior.presentation.components.SelectableButton
 
 @Composable
 fun GoalScreen(
-    onNavigate: (UiEvent.Navigate) -> Unit,
+    onNextClick: () -> Unit,
     viewModel: GoalViewModel = hiltViewModel(),
 ) {
     val spacing = LocalSpacing.current
@@ -37,7 +36,7 @@ fun GoalScreen(
     LaunchedEffect(key1 = true) {
         viewModel.uiEvent.collect { event ->
             when (event) {
-                is UiEvent.Navigate -> onNavigate(event)
+                is UiEvent.Success -> onNextClick()
                 else -> Unit
             }
         }

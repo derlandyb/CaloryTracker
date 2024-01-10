@@ -7,7 +7,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import br.com.derlandybelchior.core.R
 import br.com.derlandybelchior.core.domain.preferences.Preferences
-import br.com.derlandybelchior.core.navigation.Route
 import br.com.derlandybelchior.core.util.UiEvent
 import br.com.derlandybelchior.core.util.UiText
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -48,7 +47,7 @@ class WeightScreenViewModel @Inject constructor(
                 return@launch
             }
             preferences.saveWeight(weightNumber)
-            _uiEvent.send(UiEvent.Navigate(Route.ACTIVITY))
+            _uiEvent.send(UiEvent.Success)
         }
     }
 }

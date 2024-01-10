@@ -1,4 +1,4 @@
-package br.com.derlandybelchior.core.navigation
+package br.com.derlandybelchior.calorytracker.navigation
 
 object Route {
     const val WELCOME = "welcome"
