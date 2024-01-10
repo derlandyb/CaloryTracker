@@ -15,6 +15,7 @@ import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import br.com.derlandybelchior.calorytracker.navigation.navigate
 import br.com.derlandybelchior.calorytracker.ui.theme.CaloryTrackerTheme
+import br.com.derlandybelchior.core.domain.preferences.Preferences
 import br.com.derlandybelchior.core.navigation.Route
 import br.com.derlandybelchior.presentation.activity.ActivityScreen
 import br.com.derlandybelchior.presentation.age.AgeScreen
@@ -27,11 +28,17 @@ import br.com.derlandybelchior.presentation.tracker_overview.TrackerOverviewScre
 import br.com.derlandybelchior.presentation.weight.WeightScreen
 import br.com.derlandybelchior.presentation.welcome.WelcomeScreen
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
+
+    @Inject
+    lateinit var preferences: Preferences
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        val shouldShowOnboarding = preferences.loadShouldShowOnboarding()
         setContent {
             CaloryTrackerTheme {
                 val navController = rememberNavController()
@@ -42,7 +49,7 @@ class MainActivity : ComponentActivity() {
                 ) { paddingValues ->
                     NavHost(
                         navController = navController,
-                        startDestination = Route.WELCOME,
+                        startDestination = if (shouldShowOnboarding) Route.WELCOME else Route.TRACKER_OVERVIEW,
                         modifier = Modifier.padding(paddingValues)
                     ) {
                         composable(Route.WELCOME) {
