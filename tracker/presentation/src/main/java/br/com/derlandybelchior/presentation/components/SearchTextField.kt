@@ -1,7 +1,6 @@
 package br.com.derlandybelchior.presentation.components
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -23,11 +22,10 @@ import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.focus.FocusState
 import androidx.compose.ui.focus.onFocusChanged
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
-import androidx.compose.ui.text.input.ImeOptions
-import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import br.com.derlandybelchior.core.R
 import br.com.derlandybelchior.core_ui.LocalSpacing
@@ -65,7 +63,8 @@ fun SearchTextField(
                 .fillMaxWidth()
                 .padding(spacing.spaceMedium)
                 .padding(end = spacing.spaceMedium)
-                .onFocusChanged { onFocusChanged(it) },
+                .onFocusChanged { onFocusChanged(it) }
+                .testTag("search_text_field"),
         )
         if (shouldShowHint) {
             Text(
