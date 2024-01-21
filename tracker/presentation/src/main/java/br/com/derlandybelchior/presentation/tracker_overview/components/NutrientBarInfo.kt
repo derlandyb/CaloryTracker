@@ -69,6 +69,18 @@ fun NutrientBarInfo(
                     cap = StrokeCap.Round
                 )
             )
+            if (value <= goal) {
+                drawArc(
+                    color = color,
+                    startAngle = 90f,
+                    sweepAngle = 360f * angleRatio.value,
+                    useCenter = false,
+                    style = Stroke(
+                        width = strokeWidth.toPx(),
+                        cap = StrokeCap.Round
+                    )
+                )
+            }
         }
         Column(
             modifier = Modifier.fillMaxWidth(),
@@ -80,6 +92,9 @@ fun NutrientBarInfo(
                 amountColor = if (value <= goal)
                     MaterialTheme.colors.onPrimary
                 else goalExceedColor,
+                unitColor = if (value <= goal) {
+                    MaterialTheme.colors.onPrimary
+                } else goalExceedColor
             )
             Text(
                 text = name,
